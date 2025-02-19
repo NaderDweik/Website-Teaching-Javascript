@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Strings Tutorial</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin-top: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        .card-header {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .tutorial-section {
+            margin-bottom: 40px;
+        }
+
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background-color: #d4edda;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        .list-group-item {
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .info-box h5 {
+            font-size: 1.3em;
+        }
+
+        .task-section {
+            background-color: #f1f1f1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+        }
+
+        .task-section ul {
+            list-style-type: none;
+        }
+
+        .task-section ul li {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>JavaScript Strings: A Comprehensive Guide</h3>
+            </div>
+            <div class="card-body">
+
+                <section class="tutorial-section">
+                    <h2>Introduction to Strings in JavaScript</h2>
+                    <p>
+                        In JavaScript, text values are represented as strings. A string can contain letters, numbers, symbols, and spaces.
+                        Unlike some programming languages, JavaScript doesn't have a dedicated "char" type for single characters, instead treating them as strings of length one.
+                    </p>
+                    <p>Strings in JavaScript are stored as a sequence of characters encoded using <strong>UTF-16</strong>, which ensures compatibility with many languages and special characters.</p>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>Different Ways to Define Strings</h2>
+                    <p>Strings can be created using different types of quotes:</p>
+                    <div class="code-block">
+                        <code>
+                            let single = 'single-quoted';<br>
+                            let double = "double-quoted";<br>
+                            let backticks = `backticks`;
+                        </code>
+                    </div>
+                    <p>While single and double quotes are essentially interchangeable, backticks (`` ` ``) offer additional benefits, like multi-line strings and embedded expressions.</p>
+                    
+                    <h3>Backticks (Template Literals)</h3>
+                    <p>Backticks allow embedding expressions inside strings, which is useful for string interpolation.</p>
+                    <div class="code-block">
+                        <code>
+                            let sum = (a, b) => a + b;<br>
+                            alert(`1 + 2 = ${sum(1, 2)}`);<br>
+                            // 1 + 2 = 3
+                        </code>
+                    </div>
+                    <p>Another advantage of backticks is multi-line support:</p>
+                    <div class="code-block">
+                        <code>
+                            let guestList = `Guests:<br>
+                                             * John<br>
+                                             * Pete<br>
+                                             * Mary`;
+                        </code>
+                    </div>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>Escape Characters and Special Characters</h2>
+                    <p>Strings support various escape sequences, including:</p>
+                    <ul class="list-group">
+                        <li class="list-group-item"><code>\n</code> - New line</li>
+                        <li class="list-group-item"><code>\t</code> - Tab</li>
+                        <li class="list-group-item"><code>\\</code> - Backslash</li>
+                        <li class="list-group-item"><code>\"</code>, <code>\'</code>, <code>\`</code> - Escape quotes</li>
+                    </ul>
+                    <div class="note">
+                        <p><strong>Note:</strong> To insert an actual backslash in a string, you need to escape it by using <code>\\</code>.</p>
+                    </div>
+                    <p>Example of a string with a newline character:</p>
+                    <div class="code-block">
+                        <code>
+                            let text = "Hello\nWorld";<br>
+                            alert(text); // Outputs: Hello (new line) World
+                        </code>
+                    </div>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>String Length and Accessing Characters</h2>
+                    <p>The <code>length</code> property gives the number of characters in a string:</p>
+                    <div class="code-block">
+                        <code>
+                            let str = "Hello";<br>
+                            alert(str.length); // 5
+                        </code>
+                    </div>
+                    <p>To access individual characters, you can use either bracket notation or the <code>at()</code> method:</p>
+                    <div class="code-block">
+                        <code>
+                            let str = "Hello";<br>
+                            alert(str[0]); // H<br>
+                            alert(str.at(0)); // H
+                        </code>
+                    </div>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>String Immutability</h2>
+                    <p>Strings in JavaScript are immutable, meaning you cannot modify a string's characters directly:</p>
+                    <div class="code-block">
+                        <code>
+                            let str = 'Hello';<br>
+                            str[0] = 'h'; // Error: Cannot assign to read-only property
+                        </code>
+                    </div>
+                    <p>Instead, you can create a new string:</p>
+                    <div class="code-block">
+                        <code>
+                            let str = 'Hello';<br>
+                            str = 'h' + str.slice(1);<br>
+                            alert(str); // hello
+                        </code>
+                    </div>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>Searching and Modifying Strings</h2>
+                    <p>To search for a substring within a string, use methods like <code>indexOf</code>, <code>includes</code>, <code>startsWith</code>, and <code>endsWith</code>.</p>
+                    <div class="code-block">
+                        <code>
+                            let str = "JavaScript is awesome!";<br>
+                            alert(str.indexOf('Java')); // 0<br>
+                            alert(str.includes('Script')); // true<br>
+                            alert(str.startsWith('Java')); // true<br>
+                            alert(str.endsWith('awesome!')); // true
+                        </code>
+                    </div>
+                </section>
+
+                <section class="tutorial-section">
+                    <h2>String Comparison</h2>
+                    <p>Strings are compared character by character based on their UTF-16 values:</p>
+                    <div class="code-block">
+                        <code>
+                            alert('a' > 'Z'); // true<br>
+                            alert('Apple' > 'apple'); // false
+                        </code>
+                    </div>
+                    <p>To compare strings in different languages, use the <code>localeCompare</code> method:</p>
+                    <div class="code-block">
+                        <code>
+                            alert('Österreich'.localeCompare('Zealand')); // -1
+                        </code>
+                    </div>
+                </section>
+
+                <section class="task-section">
+                    <h2>Task Examples</h2>
+                    <div class="task-example">
+                        <h4>Task 1: Uppercase the First Character</h4>
+                        <p>Write a function <code>ucFirst(str)</code> that returns the string with the first character in uppercase:</p>
+                        <div class="code-block">
+                            <code>
+                                function ucFirst(str) {<br>
+                                    return str.charAt(0).toUpperCase() + str.slice(1);<br>
+                                }<br>
+                                alert(ucFirst("john")); // John
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="task-example">
+                        <h4>Task 2: Check for Spam</h4>
+                        <p>Write a function <code>checkSpam(str)</code> that checks if the string contains words like 'viagra' or 'XXX'. It should be case-insensitive:</p>
+                        <div class="code-block">
+                            <code>
+                                function checkSpam(str) {<br>
+                                    return /viagra|xxx/i.test(str);<br>
+                                }<br>
+                                alert(checkSpam("buy ViAgRA now")); // true<br>
+                                alert(checkSpam("free xxxxx")); // true<br>
+                                alert(checkSpam("innocent rabbit")); // false
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="task-example">
+                        <h4>Task 3: Truncate the Text</h4>
+                        <p>Create a function <code>truncate(str, maxlength)</code> that truncates the string to the maximum length and adds "..." at the end if needed:</p>
+                        <div class="code-block">
+                            <code>
+                                function truncate(str, maxlength) {<br>
+                                    if (str.length > maxlength) {<br>
+                                        return str.slice(0, maxlength - 1) + '...';<br>
+                                    }<br>
+                                    return str;<br>
+                                }<br>
+                                alert(truncate("What I'd like to tell on this topic is:", 20)); // What I'd like to te…
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="task-example">
+                        <h4>Task 4: Extract the Money</h4>
+                        <p>Write a function <code>extractCurrencyValue(str)</code> that extracts the numeric value from a string like "$120" and returns it as a number:</p>
+                        <div class="code-block">
+                            <code>
+                                function extractCurrencyValue(str) {<br>
+                                    return +str.slice(1);<br>
+                                }<br>
+                                alert(extractCurrencyValue('$120')); // 120
+                            </code>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
